@@ -17,7 +17,6 @@ export default class Instrumentlist extends Component {
 
   renderInstruments() {
     const { instruments = [] } = this.context
-    console.log(this.context)
     return instruments.map(inst =>
       <Instrumentpanel
         key={inst.id}

@@ -11,6 +11,15 @@ getInstruments(){
             : res.json()
         
     })
+},
+getInstrument(id){
+    //console.log('here')
+    return fetch(`${config.API_ENDPOINT}/instruments/${id}`)
+    .then(res =>{
+        return (!res.ok)
+            ? res.json().then(e => Promise.reject(e))
+            : res.json() 
+    })
 }
 }
 

@@ -20,7 +20,6 @@ export class InstrumentListProvider extends Component {
     }
   
     setError = error => {
-      console.error(error)
       this.setState({ error })
     }
   
