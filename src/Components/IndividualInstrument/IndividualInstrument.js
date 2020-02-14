@@ -15,30 +15,34 @@ export default class IndividualInstrument extends Component {
       .then(inst=>{
         console.log(inst);  
         this.setState({instrument:inst})
+
       })
       .catch(this.context.setError)
   }
 
   renderoneInstrument(instrument) {
-    return(
-      <>
-      <h1>{instrument.name}</h1>
-      <p>{instrument.description}</p>
-      <p>{instrument.image}</p>
-      </>
-    )
+      if (instrument){return(
+        <>
+        <h1>{instrument.name}</h1>
+        <p>{instrument.decription}</p>
+        <p>{instrument.image}</p>
+        </>
+      ) 
+      }
+      else{
+        return <></>
+      }
   }
   render() {
     const {error} = this.context
     const{instrument}=this.state
+    console.log(this.props)
     return (
       <>
         {error
-          ? <p>There was an error, try again</p>
+          ? <p>That instrument doesn't exist, try again</p>
           : this.renderoneInstrument(instrument)}
       </>
     )
   }
-
-
 }

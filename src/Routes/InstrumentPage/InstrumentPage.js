@@ -8,7 +8,7 @@ export default class InstrumentPage extends Component {
         return (
             <>
             <Header/>
-            <IndividualInstrument instrumentid={this.props.instrumentid} />
+            <IndividualInstrument {...this.props}/>
             </>
         )
     }

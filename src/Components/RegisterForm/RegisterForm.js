@@ -11,7 +11,6 @@ export default class RegisterForm extends Component {
         e.preventDefault()
         this.setState({error:null})
         const {user_name,password,full_name}=e.target
-        console.log(full_name.value);
         const thisfull=full_name.value;
         userService.postUser({user_name:user_name.value,password:password.value,full_name:thisfull})
         .then(res=>{

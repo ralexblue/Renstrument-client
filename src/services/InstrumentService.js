@@ -13,7 +13,7 @@ getInstruments(){
     })
 },
 getInstrument(id){
-    //console.log('here')
+    console.log('here')
     return fetch(`${config.API_ENDPOINT}/instruments/${id}`)
     .then(res =>{
         return (!res.ok)

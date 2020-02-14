@@ -7,7 +7,7 @@ export default class Instrumentpanel extends Component {
       return (
         <Link to={`/instruments/${instrument.id}`}>
             <h1>{instrument.name}</h1>
-            <p>{instrument.description}</p>
+            <p>{instrument.decription}</p>
             <p>{instrument.image}</p>
         </Link>
       )
