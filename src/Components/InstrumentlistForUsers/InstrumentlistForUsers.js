@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import InstrumentContext from '../../context/InstrumentContext'
 import Instrumentpanel  from '../instrumentpanel/Instrumentpanel.js'
 import InstrumentService from '../../services/InstrumentService'
-import './Instrumentlist.css'
+//import './Instrumentlist.css'
 
-export default class Instrumentlist extends Component {
+export default class InstrumentlistForUsers extends Component {
   static contextType = InstrumentContext
   componentDidMount() {
     this.context.clearError()
@@ -18,21 +18,21 @@ export default class Instrumentlist extends Component {
   renderInstruments() {
     const { instruments = [] } = this.context
     return instruments.map(inst =>
-        <Instrumentpanel
-          key={inst.id}
-          instrument={inst}
-        />
+        <div class="wrapper">
+      <Instrumentpanel
+        key={inst.id}
+        instrument={inst}
+      />
+      </div>
     )
   }
   render() {
     const { error } = this.context
     return (
       <>
-       <div class="wrapper">
         {error
           ? <p>There was an error, try again</p>
           : this.renderInstruments()}
-        </div>
       </>
     )
   }

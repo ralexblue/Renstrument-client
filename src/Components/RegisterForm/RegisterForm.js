@@ -30,7 +30,7 @@ export default class RegisterForm extends Component {
       return (
       <>
       <h1>Register</h1>
-      <form className='LoginForm'onSubmit={this.handleNewUser}>
+      <form className='RegisterForm'onSubmit={this.handleNewUser}>
        <>{error && <p>{error}</p>}</>
         <label>User Name:</label>
         <input required name='user_name' id='user_name'></input>

@@ -25,9 +25,15 @@ postUser(newuser){
           ? res.json().then(e => Promise.reject(e))
           : res.json()
       )
-    
-}
-
+},
+getUser(id){
+  return fetch(`${config.API_ENDPOINT}/users/${id}`)
+  .then(res =>{
+      return (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+  })
+},
 }
 
 export default userService

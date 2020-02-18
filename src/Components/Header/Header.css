@@ -1,0 +1,20 @@
+.userLogin_Style{
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 30px;
+    text-decoration: none;
+    word-spacing: 3px;
+}
+.whole_header{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    height:75px;   
+    border: 1px black solid;
+    text-decoration: none;
+}
+.title{
+    justify-content: center;
+    text-decoration: none;
+
+}

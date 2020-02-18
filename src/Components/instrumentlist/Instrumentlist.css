@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+    align-content: flex-start;
+}
+
+
+@media screen and (min-width: 930px) {
+    .wrapper{
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-evenly;
+    }  
+}

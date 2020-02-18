@@ -4,9 +4,13 @@ import Homepage from '../../Routes/HomePage/HomePage'
 import LoginPage from '../../Routes/Login Page/LoginPage'
 import RegisterPage from '../../Routes/Register Page/RegisterPage'
 import InstrumentPage from '../../Routes/InstrumentPage/InstrumentPage'
+import UserPage from '../../Routes/UserPage/UserPage'
+import UserWithInstrumentPage from '../../Routes/UserWithInstrumentPage/UserWithInstrumentPage'
+import InstrumentContext from '../../context/InstrumentContext'
 import './App.css';
 
 class App extends Component {
+  static contextType = InstrumentContext
   state = { hasError: false }
   static getDerivedStateFromError(error) {
     console.error(error)
@@ -38,6 +42,16 @@ class App extends Component {
               path={`/instruments/:id`}
               component={props=><InstrumentPage {...props}/>}
             />
+            <Route
+              exact
+              path={`/users/:id`}
+              component={props=><UserPage {...props}/>}
+            />
+            <Route
+              exact
+              path={`/users/:id/instruments`}
+              component={props=><UserWithInstrumentPage {...props}/>}
+            /> 
             
           </Switch>
         </main>
@@ -45,5 +59,5 @@ class App extends Component {
     );
   }
 }
-
+/**/
 export default App;

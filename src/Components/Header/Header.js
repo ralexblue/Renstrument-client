@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
-//import './Header.css'
+import InstrumentContext from '../../context/InstrumentContext'
+import './Header.css'
 
 export default class Header extends Component {
+  static contextType = InstrumentContext
   handleLogoutClick = () => {
     TokenService.clearAuthToken();
   }
   renderLoginLink() {
     return (
-    <div>
+    <div class ="userLogin_Style">
       <Link to='/login'>
         {' '}
         Login
@@ -23,7 +25,11 @@ export default class Header extends Component {
   }
   renderLogoutLink() {
     return (
-      <div>
+      <div class ="userLogin_Style">
+        <Link to={`/users/${this.context.currentUserid}`}>
+        My account
+        </Link>
+        <p/>
         <Link
           onClick={this.handleLogoutClick}
           to='/'>
@@ -36,14 +42,16 @@ export default class Header extends Component {
 
 
   render() {
-    return <>
+    return <div class="whole_header">
+      <div class="title">
         <Link to='/'>
         {' '}
         Renstrument
-        </Link>
+        </Link>  
+        </div>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
-    </>
+    </div>
   }
 }

@@ -8,6 +8,7 @@ export default class IndividualInstrument extends Component {
   state={
     instrument:null,
   }
+
   componentDidMount() {
     this.context.clearError()
     console.log(this.props.match.params.id)
@@ -21,12 +22,13 @@ export default class IndividualInstrument extends Component {
   }
 
   renderoneInstrument(instrument) {
-      if (instrument){return(
-        <>
+      if (instrument){
+        return(
+        <div class ="box">
+        <img src ={instrument.image} alt="none"/>
         <h1>{instrument.name}</h1>
         <p>{instrument.decription}</p>
-        <p>{instrument.image}</p>
-        </>
+        </div>
       ) 
       }
       else{
