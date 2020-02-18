@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import TokenService from '../../services/token-service'
 import authService from '../../services/authService'
 import InstrumentContext from '../../context/InstrumentContext'
-
 //import './LoginForm.css'
+
 export default class LoginForm extends Component {
   static contextType = InstrumentContext;
     static defaultProps = {
@@ -26,7 +26,6 @@ export default class LoginForm extends Component {
           const thisnum=res.id.user_id;
           this.context.saveuserid(thisnum);
           this.props.onLoginSuccess();
-          
         })
         .catch(res=>{
           this.setState({error:res.error})

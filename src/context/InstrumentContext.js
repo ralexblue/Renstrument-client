@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 const InstrumentContext= React.createContext({
     instruments:[],
-    currentUserid:null,
+    currentUserid:0,
     setError: () => {},
     clearError: () => {},
     setinstrumentList: () => {},
@@ -14,7 +14,7 @@ export default InstrumentContext
 export class InstrumentListProvider extends Component {
     state = {
       instruments: [],
-      currentUserid:null,
+      currentUserid:0,
       error: null,
     }
     saveuserid = currentUserid =>{

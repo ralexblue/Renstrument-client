@@ -3,9 +3,9 @@
     flex-direction: column;
     height: 100%;
     align-items: center;
-    align-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
 }
-
 
 @media screen and (min-width: 930px) {
     .wrapper{

@@ -9,8 +9,7 @@ export default class Instrumentlist extends Component {
   componentDidMount() {
     this.context.clearError()
     InstrumentService.getInstruments()
-      .then(inst=>{
-        //console.log(inst);  
+      .then(inst=>{ 
         this.context.setinstrumentList(inst)})
       .catch(this.context.setError)
   }

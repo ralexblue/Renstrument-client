@@ -38,20 +38,17 @@ export default class Header extends Component {
       </div>
     )
 }
-
-
-
-  render() {
-    return <div class="whole_header">
-      <div class="title">
-        <Link to='/'>
-        {' '}
-        Renstrument
-        </Link>  
-        </div>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
-    </div>
-  }
+render() {
+  return <div class="whole_header">
+    <div class="title">
+      <Link to='/'>
+      {' '}
+      Renstrument
+      </Link>  
+      </div>
+      {TokenService.hasAuthToken()
+        ? this.renderLogoutLink()
+        : this.renderLoginLink()}
+  </div>
+}
 }
