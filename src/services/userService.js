@@ -41,8 +41,14 @@ getUserInst(id){
           ? res.json().then(e => Promise.reject(e))
           : res.json()
   })
-
-
+},
+getUserWhoOwnsinst(id){
+  return fetch(`${config.API_ENDPOINT}/instruments/users/${id}`)
+  .then(res =>{
+      return (!res.ok)
+          ? res.json().then(e => Promise.reject(e))
+          : res.json()
+  })
 }
 
 /*parseJwt(token) {

@@ -1,19 +1,11 @@
 import React, { Component } from 'react'
 import InstrumentContext from '../../context/InstrumentContext'
 import Instrumentpanel  from '../instrumentpanel/Instrumentpanel.js'
-import InstrumentService from '../../services/InstrumentService'
 import './Instrumentlist.css'
 
 export default class Instrumentlist extends Component {
   static contextType = InstrumentContext
-  componentDidMount() {
-    this.context.clearError()
-    InstrumentService.getInstruments()
-      .then(inst=>{ 
-        this.context.setinstrumentList(inst)})
-      .catch(this.context.setError)
-  }
-
+  
   renderInstruments() {
     const { instruments = [] } = this.context
     return instruments.map(inst =>

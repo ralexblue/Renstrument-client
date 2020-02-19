@@ -25,6 +25,7 @@ export default class LoginForm extends Component {
           TokenService.saveAuthToken(res.authToken)
           const thisnum=res.id.user_id;
           this.context.saveuserid(thisnum);
+          console.log(this.context)
           this.props.onLoginSuccess();
         })
         .catch(res=>{

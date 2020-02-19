@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import InstrumentContext from '../../context/InstrumentContext'
-//import InstrumentService from '../../services/InstrumentService'
-//import './Instrumentlist.css'
-
+import './IndividualInstrument.css'
+import userService from '../../services/userService'
 export default class IndividualInstrument extends Component {
   static contextType = InstrumentContext
   renderoneInstrument(instrument) {
       if (instrument){
-        return(
+        return(<>
         <div class ="box2">
           <img src ={instrument.image} alt="none"/>
+          <div class="column">
           <h1>{instrument.name}</h1>
-          <p>{instrument.decription}</p>
-        </div>
+          <h2>{instrument.decription}</h2>
+          <h3>{instrument.contact}</h3>
+          <h4>{instrument.email}</h4>
+          <h3>user: {instrument.user_name}</h3>
+          </div>
+        </div>   
+        </>
         ) 
       }
       else{
@@ -21,11 +26,11 @@ export default class IndividualInstrument extends Component {
   }
   render() {
     const {error} = this.context
-    console.log(this.props)
+    //console.log(this.props)
     const thisid=this.props.match.params.id;
-    const instruments= this.context.instruments
-    console.log(instruments);
-    const found = instruments.find(inst=>inst.id == thisid); 
+    const instrumentswithusers= this.context.instrumentswithusers
+    //console.log(instrumentswithusers);
+    const found = instrumentswithusers.find(inst=>inst.id == thisid); 
     return (
       <>
         {error

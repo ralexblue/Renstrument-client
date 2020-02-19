@@ -8,8 +8,8 @@ import UserPage from '../../Routes/UserPage/UserPage'
 import UserWithInstrumentPage from '../../Routes/UserWithInstrumentPage/UserWithInstrumentPage'
 import InstrumentContext from '../../context/InstrumentContext'
 import InstrumentService from '../../services/InstrumentService'
-import TokenService from '../../services/token-service'
-//import userService from '../../services/userService'
+//import TokenService from '../../services/token-service'
+import userService from '../../services/userService'
 import './App.css';
 
 class App extends Component {
@@ -22,14 +22,29 @@ class App extends Component {
   componentDidMount() {
     this.context.clearError()
     InstrumentService.getInstruments()
-      .then(inst=>{ 
-        this.context.setinstrumentList(inst)})
+      .then(inst=>{
+        this.context.setinstrumentList(inst)
+      })
+      .then(()=>{
+        const newemptyarr=[];
+        const newinstlist=this.context.instruments.map(newinstrumnetobj=>{
+        userService.getUserWhoOwnsinst(newinstrumnetobj.id)
+          .then(userforinst=>{
+            const newinstbody={
+              ...newinstrumnetobj,
+              contact:userforinst.contact,
+              email:userforinst.email,
+              user_name:userforinst.user_name,
+              user_id:userforinst.id
+          }
+          //console.log(newinstbody);
+          newemptyarr.push(newinstbody)
+          })
+        })
+      this.context.setinstrumentListforusers(newemptyarr)
+      //console.log(this.context.instrumentswithusers)
+      })
       .catch(this.context.setError);
-      if(TokenService.hasAuthToken){
-      //const token=TokenService.getAuthToken()
-      TokenService.clearAuthToken();
-      //console.log(token);
-    }
   }
   render() {
     return (
