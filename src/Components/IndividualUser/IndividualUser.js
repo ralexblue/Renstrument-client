@@ -3,7 +3,7 @@ import InstrumentContext from '../../context/InstrumentContext'
 import userService from '../../services/userService'
 import InstrumentService from '../../services/InstrumentService'
 import InstrumentpanelforUser  from '../InstrumentpanelforUser/InstrumentpanelforUser.js'
-//import './Instrumentlist.css'
+import './Individualuser.css'
 
 export default class IndividualUser extends Component {
   static contextType = InstrumentContext
@@ -13,11 +13,14 @@ export default class IndividualUser extends Component {
       currentuser:null,
       addinst:false,
       userInstruments:[],
+      editUser:false,
       name:'',
       description:'',
       Category:'Brass',
       image:'',
+      
     };
+
   }
   handleChangeName=(event)=> {
     //console.log(event.target.value)
@@ -35,7 +38,22 @@ export default class IndividualUser extends Component {
     //console.log(event.target.value)
     this.setState({image: event.target.value});
   }
-
+  handleChangeUser_Name=(event)=> {
+    //console.log(event.target.value)
+    this.setState({currentuser:{...this.state.currentuser,user_name: event.target.value}});
+  }
+  handleChangeFull_name=(event)=> {
+    //console.log(event.target.value)
+    this.setState({currentuser:{...this.state.currentuser,full_name: event.target.value}});
+  }
+  handleChangeEmail=(event)=> {
+    //console.log(event.target.value)
+    this.setState({currentuser:{...this.state.currentuser,email: event.target.value}});
+  }
+  handleChangeContact=(event)=> {
+    //console.log(event.target.value)
+    this.setState({currentuser:{...this.state.currentuser,contact: event.target.value}});
+  }
 
   handleSubmitForNewInstrument=()=>{
     const newInstruemntToAdd={
@@ -55,16 +73,16 @@ export default class IndividualUser extends Component {
         image:'',
         userInstruments:[...this.state.userInstruments,res]
       })
+      this.context.addNewInstrument(res);
     })
   }
 
   componentDidMount(){ 
     if(this.context.currentUserid>0){
-      console.log('ok');
+      //console.log('ok');
       this.getuserfromdb();
       this.getuserinstfromdb();
     }
-    console.log(this.context.currentUserid);
   }
   thishandleaddinst=()=>{
     this.setState({
@@ -94,7 +112,48 @@ export default class IndividualUser extends Component {
     })
     .catch(this.context.setError)
   }
-
+  thishandleEdituser=()=>{
+    this.setState({
+      editUser:!this.state.editUser,
+    })
+  }
+  edituserForm(){
+    const {error} = this.context
+      return(<>
+        <form className='postnewinstrument'>
+        <>{error && <p>{error}</p>}</>
+        <label>Name:</label>
+        <input onChange={this.handleChangeUser_Name} value={this.state.currentuser.user_name} required name='name' id='name'></input>
+        <br/>
+        <label>Full Name:</label>
+        <input onChange={this.handleChangeFull_name} value={this.state.currentuser.full_name} required name='full_name' id='full_name'></input>
+        <br/>
+        <label>description:</label>
+        <input onChange={this.handleChangeEmail} value={this.state.currentuser.email}  name='description' id='description'></input>
+        <br/>
+        <label>image:</label>
+        <input onChange={this.handleChangeContact} value={this.state.currentuser.contact} name='image' id='image'></input>
+        </form>
+        <br/>
+        <button onClick={this.handleSubmitForUpdatedUser}>submit</button>
+        <br/>
+        </>
+      )
+  }
+  handleSubmitForUpdatedUser= ()=>{
+    //console.log(this.state.currentuser)
+    const updateduser={
+      user_name:this.state.currentuser.user_name,
+      full_name:this.state.currentuser.full_name,
+      email:this.state.currentuser.email,
+      contact:this.state.currentuser.contact,
+    }
+   userService.patchUser(updateduser,this.context.currentUserid)
+   .then(()=>{
+    this.thishandleEdituser();
+   });
+    //userService
+  }
 
   addinstrumentForm(){
     const {error} = this.context
@@ -103,6 +162,7 @@ export default class IndividualUser extends Component {
         <>{error && <p>{error}</p>}</>
         <label>Name:</label>
         <input onChange={this.handleChangeName} value={this.state.name} required name='name' id='name'></input>
+        <br/>
         <label>
           what type of instrument:
         <select onChange={this.handleChangeCategory} value={this.state.Category} >
@@ -114,11 +174,14 @@ export default class IndividualUser extends Component {
           <option value="Misc">Misc</option>
         </select>
         </label>
+        <br/>
         <label>description:</label>
-        <input onChange={this.handleChangeDescription} value={this.state.description}  name='description' id='description'></input>
+        <input class="adddesc" onChange={this.handleChangeDescription} value={this.state.description}  name='description' id='description'></input>
+        <br/>
         <label>image:</label>
         <input onChange={this.handleChangeImage} value={this.state.image} name='image' id='image'></input>
         </form>
+        <br/>
         <button onClick={this.handleSubmitForNewInstrument}>submit</button>
         </>
       )
@@ -136,7 +199,7 @@ export default class IndividualUser extends Component {
   }
   updateUserinstrumentfordelete =(id)=>{
     const { userInstruments = [] } = this.state
-    const newuserInstruments =userInstruments.filter(inst=>inst.id==id);
+    const newuserInstruments = userInstruments.filter(inst=>inst.id != id);
     this.setState({
       userInstruments:newuserInstruments
     })
@@ -149,6 +212,11 @@ export default class IndividualUser extends Component {
             <h1>{user.user_name}</h1>
             <p>{user.full_name}</p>
             <p>{user.email}</p>
+            <p>{user.contact}</p>
+            <button onClick ={this.thishandleEdituser}>editUser</button>
+            {this.state.editUser ? 
+            this.edituserForm()
+            :<></>}
             <button onClick ={this.thishandleaddinst}>Add instrument</button>
             {this.state.addinst ? 
             this.addinstrumentForm()

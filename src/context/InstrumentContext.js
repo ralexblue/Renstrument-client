@@ -8,9 +8,8 @@ const InstrumentContext= React.createContext({
     clearError: () => {},
     setinstrumentList: () => {},
     saveuserid:() =>{},
-    makeNewInstrument:()=>{},
-    editInstrument:()=>{},
-    deleteAnInstrument:()=>{},
+    addNewInstrument:()=>{},
+   
 })
 
 export default InstrumentContext
@@ -26,9 +25,13 @@ export class InstrumentListProvider extends Component {
     saveuserid = currentUserid =>{
       this.setState({currentUserid})
     }
+    
 
     setinstrumentList = instruments => {
       this.setState({instruments})
+    }
+    addNewInstrument = newinstrument =>{
+      this.setState({instruments:[...this.state.instruments,newinstrument]})
     }
     setinstrumentListforusers = instrumentswithusers => {
       this.setState({instrumentswithusers})
@@ -46,11 +49,7 @@ export class InstrumentListProvider extends Component {
         // Whatever storage mechanism you end up deciding to use.
         localStorage.setItem("parentValueKey")
       }
-    }
-
-    makeNewInstrument=()=>{}
-    editInstrument=()=>{}
-    deleteAnInstrument=()=>{}  
+    }  
     render() {
       const value = {
         instruments: this.state.instruments,
@@ -62,9 +61,7 @@ export class InstrumentListProvider extends Component {
         setinstrumentListforusers:this.setinstrumentListforusers,
         setinstrumentList: this.setinstrumentList,
         saveuserid:this.saveuserid,
-        makeNewInstrument:this.makeNewInstrument,
-        editInstrument:this.editInstrument,
-        deleteAnInstrument:this.deleteAnInstrument,
+        addNewInstrument:this.addNewInstrument,
       }
 
       return (

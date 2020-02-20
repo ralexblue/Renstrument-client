@@ -5,7 +5,7 @@ import LoginPage from '../../Routes/Login Page/LoginPage'
 import RegisterPage from '../../Routes/Register Page/RegisterPage'
 import InstrumentPage from '../../Routes/InstrumentPage/InstrumentPage'
 import UserPage from '../../Routes/UserPage/UserPage'
-import UserWithInstrumentPage from '../../Routes/UserWithInstrumentPage/UserWithInstrumentPage'
+//import UserWithInstrumentPage from '../../Routes/UserWithInstrumentPage/UserWithInstrumentPage'
 import InstrumentContext from '../../context/InstrumentContext'
 import InstrumentService from '../../services/InstrumentService'
 //import TokenService from '../../services/token-service'
@@ -77,17 +77,16 @@ class App extends Component {
               path={`/users/:id`}
               component={props=><UserPage {...props}/>}
             />
-            <Route
-              exact
-              path={`/users/:id/instruments`}
-              component={props=><UserWithInstrumentPage {...props}/>}
-            /> 
-            
+              
           </Switch>
         </main>
       </div>
     );
   }
 }
-/**/
+/*<Route
+  exact
+  path={`/users/:id/instruments`}
+  component={props=><UserWithInstrumentPage {...props}/>}
+/>  later can be implemented*/
 export default App;

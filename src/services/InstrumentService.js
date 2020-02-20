@@ -43,8 +43,11 @@ postInstrument(newInst) {
           : res.json()
       )
   },
-  patchInstrument(newinst) {
-    return fetch(`${config.API_ENDPOINT}/instruments`, {
+  patchInstrument(newinst,id) {
+      //console.log(id);
+      //console.log(newinst);
+      //console.log(`${config.API_ENDPOINT}/instruments/${id}`)
+    return fetch(`${config.API_ENDPOINT}/instruments/${id}`, {
       method: 'PATCH',
       headers: {
         'Authorization':`Bearer ${TokenService.getAuthToken()}`,
@@ -52,11 +55,6 @@ postInstrument(newInst) {
       },
       body: JSON.stringify(newinst),
     })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
   }
 }
 

@@ -11,12 +11,11 @@ export default class InstrumentpanelforUser extends Component {
         editinst:false,
         instId:this.props.instrument.id,
         name:this.props.instrument.name,
-        category:'',
+        category:'Misc',
         description:this.props.instrument.decription,
         image:this.props.instrument.image,
       };
     }
-    
     handleChangeName=(event)=> {
       this.setState({name: event.target.value});
     }
@@ -34,30 +33,45 @@ export default class InstrumentpanelforUser extends Component {
         editinst:!this.state.editinst,
       })
     }
+    /*shouldComponentUpdate(nextProps, nextState) {
+      if(this.state.name===nextProps.name){
+        return true
+      }
+      else{
+        return false
+      }
+    }*/
     editinstrumentForm(){
       const {error} = this.context
-      return(
+      return( <div class="tofit">
         <form className='patchinstrument'>
         <>{error && <p>{error}</p>}</>
-        <label>Name:</label>
+        <label>Name:
         <input onChange={this.handleChangeName} required name='name' id='name'value={this.state.name}></input>
+        </label>
+        <br/>
         <label>
           what type of instrument:
         <select onChange={this.handleChangeCategory} value={this.state.category}>
           <option value="Brass">Brass</option>
           <option value="Guitar">Guitar</option>
-          <option selected value="Keyboard">Keyboard</option>
-          <option selected value="Percussion">Percussion</option>
-          <option selected value="Strings">Strings</option>
+          <option value="Keyboard">Keyboard</option>
+          <option value="Percussion">Percussion</option>
+          <option value="Strings">Strings</option>
           <option value="Misc">Misc</option>
         </select>
         </label>
+        <br/>
         <label>description:</label>
-        <input onChange={this.handleChangeDescription} name='description' id='description' value={this.state.description}></input>
+        <br/>
+        <input class="editdesc" onChange={this.handleChangeDescription} name='description' id='description' value={this.state.description}></input>
+        <br/>
         <label>image:</label>
         <input onChange={this.handleChangeImage} name='image' id='image' value={this.state.image}></input>
+        <br/>
         <button onClick={this.handleEditIntrument}>submit</button>
         </form>
+        </div>
       )
     }
     handleDeleteIntrument=()=>{
@@ -68,42 +82,38 @@ export default class InstrumentpanelforUser extends Component {
         console.log('instrument deleted')
       })
     }
-    handleEditIntrument=()=>{
+    handleEditIntrument=e=>{
+      e.preventDefault();
       const editedInstrument={
         name:this.state.name,
         description:this.state.description,
         image:this.state.image,
-        category:this.state.Category
+        category:this.state.category
       }
-      console.log(this.state.instId);
-      console.log(editedInstrument);
+      //console.log(this.state.instId);
+      //console.log(editedInstrument);
+      
       InstrumentService.patchInstrument(editedInstrument,this.state.instId)
-      .then(res=>{
-        this.setState({
-          name:res.name,
-          decription:res.decription,
-          image:res.image,
-          category:res.category,
-          editinst:!this.state.editinst,
-        })
-
+      .then(()=>{
+        this.thisHandleEditInstForm();
       })
     }
+  
 
     render() {
-      const { instrument } = this.props
+      const { instrument } = this.state
       return (
         <div class="box">
-          <Link to={`/instruments/${instrument.id}`} >
-              <img src ={instrument.image} alt="none"/>
+          <Link to={`/instruments/${this.state.instId}`} >
+              <img src ={this.state.image} alt="none"/>
           </Link>
           <h1>Name</h1>
-          <p>{instrument.name}</p>
+          <p>{this.state.name}</p>
           <h3>description</h3>
-          <p>{instrument.decription}</p>
+          <p>{this.state.description}</p>
           <span></span>
           <button onClick ={this.thisHandleEditInstForm}>edit</button>
-          {this.state.editinst ? 
+         {this.state.editinst ? 
             this.editinstrumentForm()
             :<></>}
           <button onClick ={this.handleDeleteIntrument}>delete</button>

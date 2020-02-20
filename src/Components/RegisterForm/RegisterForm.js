@@ -3,7 +3,8 @@ import userService from '../../services/userService'
 //import './LoginForm.css'
 import { Link } from 'react-router-dom'
 export default class RegisterForm extends Component {
-    state = { error: null,
+    state = { 
+        error: null,
         user_namestate:null 
     }
 

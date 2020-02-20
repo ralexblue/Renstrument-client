@@ -1,5 +1,5 @@
 import config from '../config'
-//import TokenService from './token-service'
+import TokenService from './token-service'
 
 const userService = {
 getUsers(){
@@ -49,6 +49,16 @@ getUserWhoOwnsinst(id){
           ? res.json().then(e => Promise.reject(e))
           : res.json()
   })
+},
+patchUser(newuser,id) {
+return fetch(`${config.API_ENDPOINT}/users/${id}`, {
+  method: 'PATCH',
+  headers: {
+    'Authorization':`Bearer ${TokenService.getAuthToken()}`,
+    'content-type': 'application/json',
+  },
+  body: JSON.stringify(newuser),
+})
 }
 
 /*parseJwt(token) {
