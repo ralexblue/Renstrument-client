@@ -12,11 +12,11 @@ export default class Header extends Component {
   renderLoginLink() {
     return (
     <div class ="userLogin_Style">
-      <Link to='/login'>
+      <Link to='/login' style={{ textDecoration: 'none' }}class="linkforuser" >
         {' '}
         Login
         </Link>
-        <Link to='/register'>
+        <Link to='/register' style={{ textDecoration: 'none' }}class="linkforuser" >
         {' '}
         Register
         </Link>
@@ -26,13 +26,13 @@ export default class Header extends Component {
   renderLogoutLink() {
     return (
       <div class ="userLogin_Style">
-        <Link to={`/users/${this.context.currentUserid}`}>
+        <Link to={`/users/${this.context.currentUserid}`} style={{ textDecoration: 'none' }}class="linkforuser" >
         My account
         </Link>
         <p/>
         <Link
           onClick={this.handleLogoutClick}
-          to='/'>
+          to='/' style={{ textDecoration: 'none' }}class="linkforuser" >
           Logout
         </Link>
       </div>
@@ -41,7 +41,7 @@ export default class Header extends Component {
 render() {
   return <div class="whole_header">
     <div class="title">
-      <Link to='/'>
+      <Link to='/' style={{ textDecoration: 'none' }}class="links" >
       {' '}
       Renstrument
       </Link>  

@@ -5,6 +5,7 @@
     text-decoration: none;
     padding: 10px;
     margin: 20px;
+    color:rgb(75, 74, 74);
 }
 img{
     width:100%;
@@ -19,4 +20,10 @@ img{
 }
 .editdesc{
     height:50px;
+}
+.patchinstrument input{
+    width:95%;
+}
+.patchinstrument textarea{
+    width:95%;
 }

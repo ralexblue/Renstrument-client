@@ -120,18 +120,22 @@ export default class IndividualUser extends Component {
   edituserForm(){
     const {error} = this.context
       return(<>
-        <form className='postnewinstrument'>
+        <form className='postnewuser'>
         <>{error && <p>{error}</p>}</>
         <label>Name:</label>
+        <br/>
         <input onChange={this.handleChangeUser_Name} value={this.state.currentuser.user_name} required name='name' id='name'></input>
         <br/>
         <label>Full Name:</label>
+        <br/>
         <input onChange={this.handleChangeFull_name} value={this.state.currentuser.full_name} required name='full_name' id='full_name'></input>
         <br/>
         <label>email:</label>
+        <br/>
         <input onChange={this.handleChangeEmail} value={this.state.currentuser.email}  name='description' id='description'></input>
         <br/>
         <label>contact:</label>
+        <br/>
         <input onChange={this.handleChangeContact} value={this.state.currentuser.contact} name='image' id='image'></input>
         </form>
         <br/>
@@ -162,6 +166,7 @@ export default class IndividualUser extends Component {
         <form className='postnewinstrument'>
         <>{error && <p>{error}</p>}</>
         <label>Name:</label>
+        <br/>
         <input onChange={this.handleChangeName} value={this.state.name} required name='name' id='name'></input>
         <br/>
         <label>
@@ -177,9 +182,11 @@ export default class IndividualUser extends Component {
         </label>
         <br/>
         <label>description:</label>
-        <input class="adddesc" onChange={this.handleChangeDescription} value={this.state.description}  name='description' id='description'></input>
+        <br/>
+        <textarea  class="adddesc" onChange={this.handleChangeDescription} value={this.state.description}  name='description' id='description'></textarea >
         <br/>
         <label>image:</label>
+        <br/>
         <input onChange={this.handleChangeImage} value={this.state.image} name='image' id='image'></input>
         </form>
         <br/>
@@ -210,7 +217,7 @@ export default class IndividualUser extends Component {
   renderoneUser(user) {
       if (user){
           return(
-            <>
+            <div class="userinfo">
             <h1>{user.user_name}</h1>
             <p>{user.full_name}</p>
             <p>{user.email}</p>
@@ -226,7 +233,7 @@ export default class IndividualUser extends Component {
             <div class="wrapper">
             {this.userinstrumentList()}
             </div>
-            </>
+            </div>
         ) 
       }
       else{

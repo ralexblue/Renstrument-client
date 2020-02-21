@@ -9,11 +9,28 @@
     display:flex;
     align-items: center;
     justify-content: space-between;
-    height:75px;   
+    height:100px;   
     border: 1px black solid;
     text-decoration: none;
 }
 .title{
     justify-content: center;
     text-decoration: none;
+}
+.links{
+    color: rgb(96, 72, 207);
+    font-size: 25px;
+    margin-left: 10px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+}
+.links:hover{
+    color: rgb(94, 177, 101);
+}
+.linkforuser{
+    color: rgb(93, 112, 219);
+}
+.linkforuser:hover{
+    color: rgb(48, 68, 95);
 }

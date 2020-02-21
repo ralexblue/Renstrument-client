@@ -8,22 +8,24 @@
     margin: 45px;
     height: auto;
     flex:1 1;
-}
-img{
-    max-width: 100%;
+    color:rgb(75, 74, 74);
 }
 .column{
     display: flex;
     flex-direction: column;
     flex-grow: 12;
+    color:rgb(75, 74, 74);
+}
+.imgforindividualinstrumets{
+    height: auto;
 }
 @media screen and (min-width: 730px) {
     .box2{
         flex-direction: row;
         flex:1 1;
     }  
-    .box2 img{
-        max-width: 40%;
+    .imgforindividualinstrumets{
+        max-width: auto;
     }
     .column{
         justify-content: center;

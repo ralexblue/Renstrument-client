@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch  } from 'react-router-dom'
+//Redirect
 import Homepage from '../../Routes/HomePage/HomePage'
 import LoginPage from '../../Routes/Login Page/LoginPage'
 import RegisterPage from '../../Routes/Register Page/RegisterPage'
@@ -46,6 +47,8 @@ class App extends Component {
       })
       .catch(this.context.setError);
   }
+  
+
   render() {
     return (
       <div className="App">

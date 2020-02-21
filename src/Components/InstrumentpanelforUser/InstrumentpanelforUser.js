@@ -23,7 +23,7 @@ export default class InstrumentpanelforUser extends Component {
       this.setState({description: event.target.value});
     }
     handleChangeCategory=(event)=> {
-      this.setState({Category: event.target.value});
+      this.setState({category: event.target.value});
     }
     handleChangeImage=(event)=>{
       this.setState({image: event.target.value});
@@ -38,9 +38,9 @@ export default class InstrumentpanelforUser extends Component {
       return( <div class="tofit">
         <form className='patchinstrument'>
         <>{error && <p>{error}</p>}</>
-        <label>Name:
+        <label>Name:</label>
+        <br/>
         <input onChange={this.handleChangeName} required name='name' id='name'value={this.state.name}></input>
-        </label>
         <br/>
         <label>
           what type of instrument:
@@ -56,9 +56,10 @@ export default class InstrumentpanelforUser extends Component {
         <br/>
         <label>description:</label>
         <br/>
-        <input class="editdesc" onChange={this.handleChangeDescription} name='description' id='description' value={this.state.description}></input>
+        <textarea class="editdesc" onChange={this.handleChangeDescription} name='description' id='description' value={this.state.description}></textarea>
         <br/>
         <label>image:</label>
+        <br/>
         <input onChange={this.handleChangeImage} name='image' id='image' value={this.state.image}></input>
         <br/>
         <button onClick={this.handleEditIntrument}>submit</button>

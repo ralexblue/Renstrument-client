@@ -8,7 +8,7 @@ export default class IndividualInstrument extends Component {
       if (instrument){
         return(<>
         <div class ="box2">
-          <img src ={instrument.image} alt="none"/>
+          <img src ={instrument.image} alt="none" class="imgforindividualinstrumets"/>
           <div class="column">
           <h1>{instrument.name}</h1>
           <h2>{instrument.decription}</h2>

@@ -1,9 +1,23 @@
 .cool{
     border: 1px black solid;
     text-decoration: none;
+
     padding: 0px;
     margin: 20px;
+    color:rgb(75, 74, 74);
 }
 img{
-    width:100%;
+    max-height:480px;
+    max-width:480px;
+    
+}
+/*height: 480px;*/
+.cool h2{
+    text-decoration: none;
+}
+.link{
+    color: rgb(85, 83, 83);
+}
+.link:hover{
+    color: rgb(194, 98, 98);
 }

@@ -8,7 +8,7 @@ export default class Instrumentpanel extends Component {
       const { instrument } = this.props
       return (
         <div class="cool">
-          <Link to={`/instruments/${instrument.id}`} >
+          <Link to={`/instruments/${instrument.id}`} style={{ textDecoration: 'none' }}class="link" >
               <img src ={instrument.image} alt="none"/>
               <h2>{instrument.name}</h2>
               <p>{instrument.decription}</p>
