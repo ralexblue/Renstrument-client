@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import InstrumentContext from '../../context/InstrumentContext'
 import './IndividualInstrument.css'
-import userService from '../../services/userService'
 export default class IndividualInstrument extends Component {
   static contextType = InstrumentContext
   renderoneInstrument(instrument) {

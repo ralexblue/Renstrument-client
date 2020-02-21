@@ -1,6 +1,7 @@
 Renstrument-client
 Name:Rentstrument
 link:https://renstument-app.now.sh/
+
 Client-side:
 All the client side is used with context with some deductions of state to be more easily read on how each component should function.Mobile-First-Design and a simple use of flex box to create panel for each item to display.A responsive user interface knowing what has happened if they submit and const change of state wit user interaction.Simple design to be minimalist from the app that it was inspired by and wil add more features in due time.
 

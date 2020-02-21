@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Router,Route, Switch  } from 'react-router-dom'
-//Redirect
+import { Route, Switch  } from 'react-router-dom'
+//Redirect,Router
 import Homepage from '../../Routes/HomePage/HomePage'
 import LoginPage from '../../Routes/Login Page/LoginPage'
 import RegisterPage from '../../Routes/Register Page/RegisterPage'
@@ -41,7 +41,9 @@ class App extends Component {
           //console.log(newinstbody);
           newemptyarr.push(newinstbody)
           })
+          return "ok"
         })
+      console.log(newinstlist.slice(0,1,2));
       this.context.setinstrumentListforusers(newemptyarr)
       //console.log(this.context.instrumentswithusers)
       })
