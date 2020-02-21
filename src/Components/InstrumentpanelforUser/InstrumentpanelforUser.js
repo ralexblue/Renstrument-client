@@ -33,14 +33,6 @@ export default class InstrumentpanelforUser extends Component {
         editinst:!this.state.editinst,
       })
     }
-    /*shouldComponentUpdate(nextProps, nextState) {
-      if(this.state.name===nextProps.name){
-        return true
-      }
-      else{
-        return false
-      }
-    }*/
     editinstrumentForm(){
       const {error} = this.context
       return( <div class="tofit">
@@ -89,19 +81,24 @@ export default class InstrumentpanelforUser extends Component {
         description:this.state.description,
         image:this.state.image,
         category:this.state.category
-      }
-      //console.log(this.state.instId);
-      //console.log(editedInstrument);
+      };
       
       InstrumentService.patchInstrument(editedInstrument,this.state.instId)
       .then(()=>{
         this.thisHandleEditInstForm();
+        /*console.log(this.context)
+        console.log(this.state.instId);
+        const newinstlist = this.context.instruments.map(inst=>inst.id != this.state.instId);
+        const newinstrumentslistforinst = newinstlist.push({...editedInstrument,id:this.state.instId});
+        this.context.setinstrumentList(newinstrumentslistforinst);
+        const newinstlistforusers=this.context.instrumentswithusers.map(inst=>inst.id != this.state.instId);
+        const neweditedinst = {...editedInstrument,...this.props.currentuser,id:this.state.instId};
+        const newerisntlistforuser=newinstlistforusers.push(neweditedinst);
+        this.context.setinstrumentListforusers(newerisntlistforuser);
+        console.log(this.context)*/
       })
     }
-  
-
     render() {
-      const { instrument } = this.state
       return (
         <div class="box">
           <Link to={`/instruments/${this.state.instId}`} >

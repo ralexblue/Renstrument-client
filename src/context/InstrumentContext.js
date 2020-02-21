@@ -9,7 +9,7 @@ const InstrumentContext= React.createContext({
     setinstrumentList: () => {},
     saveuserid:() =>{},
     addNewInstrument:()=>{},
-   
+    addnewUserinstrument:()=>{},
 })
 
 export default InstrumentContext
@@ -25,7 +25,6 @@ export class InstrumentListProvider extends Component {
     saveuserid = currentUserid =>{
       this.setState({currentUserid})
     }
-    
 
     setinstrumentList = instruments => {
       this.setState({instruments})
@@ -33,23 +32,22 @@ export class InstrumentListProvider extends Component {
     addNewInstrument = newinstrument =>{
       this.setState({instruments:[...this.state.instruments,newinstrument]})
     }
+    addnewUserinstrument = newinst =>{
+      this.setState({instrumentswithusers:[...this.state.instrumentswithusers,newinst]})
+    }
+    /*addupdateInstrument = newinstrument =>{
+      this.state.instruments.filter(inst=>inst.id !==)
+      this.setState({instruments:[...this.state.instruments,newinstrument]})
+    }*/
     setinstrumentListforusers = instrumentswithusers => {
       this.setState({instrumentswithusers})
     }
-  
     setError = error => {
       this.setState({ error })
     }
-  
     clearError = () => {
       this.setState({ error: null })
-    }
-    componentDidUpdate(prevProps, prevState) {
-      if (this.state.value !== prevState.value) {
-        // Whatever storage mechanism you end up deciding to use.
-        localStorage.setItem("parentValueKey")
-      }
-    }  
+    } 
     render() {
       const value = {
         instruments: this.state.instruments,
@@ -62,6 +60,7 @@ export class InstrumentListProvider extends Component {
         setinstrumentList: this.setinstrumentList,
         saveuserid:this.saveuserid,
         addNewInstrument:this.addNewInstrument,
+        addnewUserinstrument:this.addnewUserinstrument,
       }
 
       return (

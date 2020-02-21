@@ -18,9 +18,7 @@ export default class IndividualUser extends Component {
       description:'',
       Category:'Brass',
       image:'',
-      
     };
-
   }
   handleChangeName=(event)=> {
     //console.log(event.target.value)
@@ -74,6 +72,8 @@ export default class IndividualUser extends Component {
         userInstruments:[...this.state.userInstruments,res]
       })
       this.context.addNewInstrument(res);
+      const newinstforuser= {...res,...this.state.currentuser}
+      this.context.addnewUserinstrument(newinstforuser);
     })
   }
 
@@ -128,10 +128,10 @@ export default class IndividualUser extends Component {
         <label>Full Name:</label>
         <input onChange={this.handleChangeFull_name} value={this.state.currentuser.full_name} required name='full_name' id='full_name'></input>
         <br/>
-        <label>description:</label>
+        <label>email:</label>
         <input onChange={this.handleChangeEmail} value={this.state.currentuser.email}  name='description' id='description'></input>
         <br/>
-        <label>image:</label>
+        <label>contact:</label>
         <input onChange={this.handleChangeContact} value={this.state.currentuser.contact} name='image' id='image'></input>
         </form>
         <br/>
@@ -151,6 +151,7 @@ export default class IndividualUser extends Component {
    userService.patchUser(updateduser,this.context.currentUserid)
    .then(()=>{
     this.thishandleEdituser();
+
    });
     //userService
   }
@@ -194,6 +195,7 @@ export default class IndividualUser extends Component {
         key={inst.id}
         instrument={inst}
         updateUserinstrumentfordelete={this.updateUserinstrumentfordelete}
+        currentuser={this.state.currentuser}
       />
       )
   }
