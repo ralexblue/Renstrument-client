@@ -21,35 +21,35 @@ export default class IndividualUser extends Component {
     };
   }
   handleChangeName=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({name: event.target.value});
   }
   handleChangeDescription=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({description: event.target.value});
   }
   handleChangeCategory=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({Category: event.target.value});
   }
   handleChangeImage=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({image: event.target.value});
   }
   handleChangeUser_Name=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({currentuser:{...this.state.currentuser,user_name: event.target.value}});
   }
   handleChangeFull_name=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({currentuser:{...this.state.currentuser,full_name: event.target.value}});
   }
   handleChangeEmail=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({currentuser:{...this.state.currentuser,email: event.target.value}});
   }
   handleChangeContact=(event)=> {
-    //console.log(event.target.value)
+    
     this.setState({currentuser:{...this.state.currentuser,contact: event.target.value}});
   }
 
@@ -60,10 +60,8 @@ export default class IndividualUser extends Component {
       image:this.state.image,
       category:this.state.Category
     }
-    console.log(newInstruemntToAdd)
     InstrumentService.postInstrument(newInstruemntToAdd)
     .then(res=>{
-      console.log(res);
       this.setState({
         name:'',
         description:'',
@@ -72,14 +70,20 @@ export default class IndividualUser extends Component {
         userInstruments:[...this.state.userInstruments,res]
       })
       this.context.addNewInstrument(res);
-      const newinstforuser= {...res,...this.state.currentuser}
+      const newuserinstruent={
+        user_id:this.state.currentuser.id,
+        user_name:this.state.currentuser.user_name,
+        email:this.state.currentuser.email,
+        contact:this.state.currentuser.contact,
+      }
+      const newinstforuser= {...res,...newuserinstruent}
       this.context.addnewUserinstrument(newinstforuser);
     })
   }
 
   componentDidMount(){ 
     if(this.context.currentUserid>0){
-      //console.log('ok');
+      
       this.getuserfromdb();
       this.getuserinstfromdb();
     }
@@ -102,7 +106,6 @@ export default class IndividualUser extends Component {
 
     else{
       this.context.setError();
-      console.log("error");
     }
   }
   getuserinstfromdb = () =>{
@@ -145,7 +148,6 @@ export default class IndividualUser extends Component {
       )
   }
   handleSubmitForUpdatedUser= ()=>{
-    //console.log(this.state.currentuser)
     const updateduser={
       user_name:this.state.currentuser.user_name,
       full_name:this.state.currentuser.full_name,

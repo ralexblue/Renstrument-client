@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import IndividualUser from './IndividualUser';
 
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  ReactDOM.render(<IndividualUser />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

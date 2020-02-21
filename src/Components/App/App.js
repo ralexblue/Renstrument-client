@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Switch  } from 'react-router-dom'
+import { Router,Route, Switch  } from 'react-router-dom'
 //Redirect
 import Homepage from '../../Routes/HomePage/HomePage'
 import LoginPage from '../../Routes/Login Page/LoginPage'

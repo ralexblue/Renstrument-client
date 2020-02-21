@@ -68,7 +68,6 @@ export default class InstrumentpanelforUser extends Component {
       )
     }
     handleDeleteIntrument=()=>{
-      console.log(this.props.instrument)
       this.props.updateUserinstrumentfordelete(this.state.instId);
       InstrumentService.delInstrument(this.state.instId)
       .then(()=>{
@@ -87,8 +86,7 @@ export default class InstrumentpanelforUser extends Component {
       InstrumentService.patchInstrument(editedInstrument,this.state.instId)
       .then(()=>{
         this.thisHandleEditInstForm();
-        /*console.log(this.context)
-        console.log(this.state.instId);
+        /*
         const newinstlist = this.context.instruments.map(inst=>inst.id != this.state.instId);
         const newinstrumentslistforinst = newinstlist.push({...editedInstrument,id:this.state.instId});
         this.context.setinstrumentList(newinstrumentslistforinst);
@@ -96,7 +94,7 @@ export default class InstrumentpanelforUser extends Component {
         const neweditedinst = {...editedInstrument,...this.props.currentuser,id:this.state.instId};
         const newerisntlistforuser=newinstlistforusers.push(neweditedinst);
         this.context.setinstrumentListforusers(newerisntlistforuser);
-        console.log(this.context)*/
+      */
       })
     }
     render() {

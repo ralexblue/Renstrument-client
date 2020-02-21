@@ -33,13 +33,14 @@ export class InstrumentListProvider extends Component {
       this.setState({instruments:[...this.state.instruments,newinstrument]})
     }
     addnewUserinstrument = newinst =>{
-      this.setState({instrumentswithusers:[...this.state.instrumentswithusers,newinst]})
+      this.setState({instrumentswithusers:[...this.state.instrumentswithusers,newinst]})    
     }
     /*addupdateInstrument = newinstrument =>{
       this.state.instruments.filter(inst=>inst.id !==)
       this.setState({instruments:[...this.state.instruments,newinstrument]})
     }*/
     setinstrumentListforusers = instrumentswithusers => {
+      
       this.setState({instrumentswithusers})
     }
     setError = error => {
