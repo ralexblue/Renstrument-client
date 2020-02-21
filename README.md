@@ -5,8 +5,8 @@ link:https://renstument-app.now.sh/
 Client-side:
 All the client side is used with context with some deductions of state to be more easily read on how each component should function.Mobile-First-Design and a simple use of flex box to create panel for each item to display.A responsive user interface knowing what has happened if they submit and const change of state wit user interaction.Simple design to be minimalist from the app that it was inspired by and wil add more features in due time.
 
-![Image of app](https://drive.google.com/file/d/19je9iMu2WdfnWNhY6ymWMr1WZ1kjaVlq/view?usp=sharing)
-![Image of app2](https://drive.google.com/file/d/1uGNI4OzFQqtY7y7A0EA4_M_mNoCGYftc/view?usp=sharing)
+![Image of app](https://github.com/ralexblue/Renstrument-client/Capture.png)
+![Image of app2](https://github.com/ralexblue/Renstrument-client/Capture2.png)
 
 summary:
 My app should function similarly to another popular application called Craiglist,but rather than multiple objects it should only be used to rent Instruments for people who have that extra guitar or  people who had never touched their bought drums. 
