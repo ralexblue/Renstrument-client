@@ -11,6 +11,7 @@ const InstrumentContext= React.createContext({
     addNewInstrument:()=>{},
     addnewUserinstrument:()=>{},
     addupdateInstrument:()=>{},
+    delInstrument:()=>{},
 })
 
 export default InstrumentContext
@@ -42,6 +43,12 @@ export class InstrumentListProvider extends Component {
       })
       this.setState({instruments: newarrys})
     }
+    delInstrument=id=>{
+      const newInstruments = this.state.instruments.filter(inst=>inst.id != id);
+      this.setState({
+        instruments:newInstruments,
+      })
+    }
     setError = error => {
       this.setState({ error })
     }
@@ -51,7 +58,6 @@ export class InstrumentListProvider extends Component {
     render() {
       const value = {
         instruments: this.state.instruments,
-        instrumentswithusers:this.state.instrumentswithusers,
         error: this.state.error,
         currentUserid:this.state.currentUserid,
         setError: this.setError,
@@ -60,6 +66,7 @@ export class InstrumentListProvider extends Component {
         saveuserid:this.saveuserid,
         addNewInstrument:this.addNewInstrument,
         addupdateInstrument:this.addupdateInstrument,
+        delInstrument:this.delInstrument,
       }
 
       return (

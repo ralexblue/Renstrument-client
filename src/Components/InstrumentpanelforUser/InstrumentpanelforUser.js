@@ -70,6 +70,7 @@ export default class InstrumentpanelforUser extends Component {
     }
     handleDeleteIntrument=()=>{
       this.props.updateUserinstrumentfordelete(this.state.instId);
+      this.context.delInstrument(this.state.instId);
       InstrumentService.delInstrument(this.state.instId)
       .then(()=>{
         console.log('instrument deleted')
