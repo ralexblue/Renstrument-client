@@ -10,7 +10,7 @@ import UserPage from '../../Routes/UserPage/UserPage'
 import InstrumentContext from '../../context/InstrumentContext'
 import InstrumentService from '../../services/InstrumentService'
 //import TokenService from '../../services/token-service'
-import userService from '../../services/userService'
+//import userService from '../../services/userService'
 import './App.css';
 
 class App extends Component {
@@ -26,27 +26,7 @@ class App extends Component {
       .then(inst=>{
         this.context.setinstrumentList(inst)
       })
-      .then(()=>{
-        const newemptyarr=[];
-        const newinstlist=this.context.instruments.map(newinstrumnetobj=>{
-        userService.getUserWhoOwnsinst(newinstrumnetobj.id)
-          .then(userforinst=>{
-            const newinstbody={
-              ...newinstrumnetobj,
-              contact:userforinst.contact,
-              email:userforinst.email,
-              user_name:userforinst.user_name,
-              user_id:userforinst.id
-          }
-          //console.log(newinstbody);
-          newemptyarr.push(newinstbody)
-          })
-          return "ok"
-        })
-      console.log(newinstlist.slice(0,1,2));
-      this.context.setinstrumentListforusers(newemptyarr)
       //console.log(this.context.instrumentswithusers)
-      })
       .catch(this.context.setError);
   }
   

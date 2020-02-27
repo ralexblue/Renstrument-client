@@ -14,6 +14,7 @@ export default class InstrumentpanelforUser extends Component {
         category:'Misc',
         description:this.props.instrument.decription,
         image:this.props.instrument.image,
+        currentuser:this.props.currentuser
       };
     }
     handleChangeName=(event)=> {
@@ -77,24 +78,20 @@ export default class InstrumentpanelforUser extends Component {
     handleEditIntrument=e=>{
       e.preventDefault();
       const editedInstrument={
+        id:this.state.instId,
         name:this.state.name,
-        description:this.state.description,
+        decription:this.state.description,
         image:this.state.image,
-        category:this.state.category
+        category:this.state.category,
+        user_id:this.state.currentuser.id,
+        user_name:this.state.currentuser.user_name,
+        email:this.state.currentuser.email,
+        contact:this.state.currentuser.contact,
       };
-      
       InstrumentService.patchInstrument(editedInstrument,this.state.instId)
       .then(()=>{
         this.thisHandleEditInstForm();
-        /*
-        const newinstlist = this.context.instruments.map(inst=>inst.id != this.state.instId);
-        const newinstrumentslistforinst = newinstlist.push({...editedInstrument,id:this.state.instId});
-        this.context.setinstrumentList(newinstrumentslistforinst);
-        const newinstlistforusers=this.context.instrumentswithusers.map(inst=>inst.id != this.state.instId);
-        const neweditedinst = {...editedInstrument,...this.props.currentuser,id:this.state.instId};
-        const newerisntlistforuser=newinstlistforusers.push(neweditedinst);
-        this.context.setinstrumentListforusers(newerisntlistforuser);
-      */
+        this.context.addupdateInstrument(editedInstrument,this.state.instId);
       })
     }
     render() {

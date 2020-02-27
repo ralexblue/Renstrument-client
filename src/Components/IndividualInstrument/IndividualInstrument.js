@@ -26,7 +26,7 @@ export default class IndividualInstrument extends Component {
   render() {
     const {error} = this.context
     const thisid=this.props.match.params.id;
-    const instrumentswithusers= this.context.instrumentswithusers
+    const instrumentswithusers= this.context.instruments
     const found = instrumentswithusers.find(inst=>inst.id == thisid); 
     return (
       <>

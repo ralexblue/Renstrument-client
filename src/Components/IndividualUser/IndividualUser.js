@@ -25,23 +25,18 @@ export default class IndividualUser extends Component {
     this.setState({name: event.target.value});
   }
   handleChangeDescription=(event)=> {
-    
     this.setState({description: event.target.value});
   }
   handleChangeCategory=(event)=> {
-    
     this.setState({Category: event.target.value});
   }
   handleChangeImage=(event)=> {
-    
     this.setState({image: event.target.value});
   }
   handleChangeUser_Name=(event)=> {
-    
     this.setState({currentuser:{...this.state.currentuser,user_name: event.target.value}});
   }
   handleChangeFull_name=(event)=> {
-    
     this.setState({currentuser:{...this.state.currentuser,full_name: event.target.value}});
   }
   handleChangeEmail=(event)=> {
@@ -60,6 +55,12 @@ export default class IndividualUser extends Component {
       image:this.state.image,
       category:this.state.Category
     }
+    const newuserinstruent={
+      user_id:this.state.currentuser.id,
+      user_name:this.state.currentuser.user_name,
+      email:this.state.currentuser.email,
+      contact:this.state.currentuser.contact,
+    }
     InstrumentService.postInstrument(newInstruemntToAdd)
     .then(res=>{
       this.setState({
@@ -69,15 +70,8 @@ export default class IndividualUser extends Component {
         image:'',
         userInstruments:[...this.state.userInstruments,res]
       })
-      this.context.addNewInstrument(res);
-      const newuserinstruent={
-        user_id:this.state.currentuser.id,
-        user_name:this.state.currentuser.user_name,
-        email:this.state.currentuser.email,
-        contact:this.state.currentuser.contact,
-      }
-      const newinstforuser= {...res,...newuserinstruent}
-      this.context.addnewUserinstrument(newinstforuser);
+      const newestinstrumentadded={...res,...newuserinstruent};
+      this.context.addNewInstrument(newestinstrumentadded);
     })
   }
 
@@ -157,9 +151,7 @@ export default class IndividualUser extends Component {
    userService.patchUser(updateduser,this.context.currentUserid)
    .then(()=>{
     this.thishandleEdituser();
-
    });
-    //userService
   }
 
   addinstrumentForm(){

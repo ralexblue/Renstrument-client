@@ -5,6 +5,7 @@
     padding: 0px;
     margin: 20px;
     color:rgb(75, 74, 74);
+    max-width:480px;
 }
 img{
     max-height:480px;

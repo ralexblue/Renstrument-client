@@ -11,7 +11,7 @@ export default class Instrumentpanel extends Component {
           <Link to={`/instruments/${instrument.id}`} style={{ textDecoration: 'none' }}class="link" >
               <img src ={instrument.image} alt="none"/>
               <h2>{instrument.name}</h2>
-              <p>{instrument.decription}</p>
+              <p class="tofitdesc">{instrument.decription}</p>
           </Link> 
         </div>
       )
