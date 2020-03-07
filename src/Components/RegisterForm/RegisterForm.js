@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import userService from '../../services/userService'
-//import './RegisterForm.css'
+import './RegisterForm.css'
 import { Link } from 'react-router-dom'
 export default class RegisterForm extends Component {
     state = { 
@@ -29,20 +29,26 @@ export default class RegisterForm extends Component {
     render() {
         const { error,user_namestate } = this.state
       return (
-      <>
+    <div class="middle2">
+      <form  class="registerform"  onSubmit={this.handleNewUser}>
       <h1>Register</h1>
-      <form className='RegisterForm'onSubmit={this.handleNewUser}>
        <>{error && <p>{error}</p>}</>
         <label>User Name:</label>
-        <input required name='user_name' id='user_name'></input>
+        <input class="innputdesign" required name='user_name' id='user_name'></input>
+        <br/>
         <label>Password:</label>
-        <input required name='password' id='password' type='password'></input>
+        <input class="innputdesign" required name='password' id='password' type='password'></input>
+        <br/>
         <label>Full Name:</label>
-        <input required name='full_name' id='full_name'></input>
-        <button>submit</button>
+        <input class="innputdesign" required name='full_name' id='full_name'></input>
+        <br/>
+        <div class="row">
+        <button class='button1'>submit</button>
+        <Link class="thelink" to="/login"><button class="button2">Login</button></Link>
+        </div>
         </form>
-        {user_namestate?<div>{user_namestate} have been added as a user <Link to='/login'>Login</Link></div>:<></> }
-      </> 
+        {user_namestate?<div>{user_namestate} have been added as a user <Link class="thelink" to="/login"><button class="button2">login</button></Link></div>:<></> }
+      </div> 
       )
     }
   }

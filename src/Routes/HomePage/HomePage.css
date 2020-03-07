@@ -1,0 +1,22 @@
+.info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+.center{
+    display: flex;
+    justify-content: center;
+    width:60%;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+.center p{
+    margin: 1px;
+}
+.center h2{
+    margin:5px;
+}

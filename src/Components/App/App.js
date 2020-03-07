@@ -15,21 +15,25 @@ import './App.css';
 
 class App extends Component {
   static contextType = InstrumentContext
-  state = { hasError: false }
+  state = { hasError: false,isLoading:true}
   static getDerivedStateFromError(error) {
     console.error(error)
     return { hasError: true }
   }
   componentDidMount() {
     this.context.clearError()
+    // start loading
+    this.context.loadingHasStarted();
     InstrumentService.getInstruments()
       .then(inst=>{
+        // loading has finished
         this.context.setinstrumentList(inst)
+        this.context.loadingHasFinished();
       })
       //console.log(this.context.instrumentswithusers)
       .catch(this.context.setError);
-  }
-  
+}
+
 
   render() {
     return (
@@ -61,8 +65,7 @@ class App extends Component {
               exact
               path={`/users/:id`}
               component={props=><UserPage {...props}/>}
-            />
-              
+            />    
           </Switch>
         </main>
       </div>

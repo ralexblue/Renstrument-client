@@ -106,11 +106,11 @@ export default class InstrumentpanelforUser extends Component {
           <h3>description</h3>
           <p>{this.state.description}</p>
           <span></span>
-          <button onClick ={this.thisHandleEditInstForm}>edit</button>
+          <button onClick ={this.thisHandleEditInstForm}>Edit</button>
          {this.state.editinst ? 
             this.editinstrumentForm()
             :<></>}
-          <button onClick ={this.handleDeleteIntrument}>delete</button>
+          <button onClick ={this.handleDeleteIntrument}>Delete</button>
         </div>
       )
     }

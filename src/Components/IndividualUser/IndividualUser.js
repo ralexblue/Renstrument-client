@@ -134,10 +134,9 @@ export default class IndividualUser extends Component {
         <label>contact:</label>
         <br/>
         <input onChange={this.handleChangeContact} value={this.state.currentuser.contact} name='image' id='image'></input>
-        </form>
         <br/>
         <button onClick={this.handleSubmitForUpdatedUser}>submit</button>
-        <br/>
+        </form>
         </>
       )
   }
@@ -179,12 +178,12 @@ export default class IndividualUser extends Component {
         <br/>
         <textarea  class="adddesc" onChange={this.handleChangeDescription} value={this.state.description}  name='description' id='description'></textarea >
         <br/>
-        <label>image:</label>
+        <label>Image(URL Link):</label>
         <br/>
         <input onChange={this.handleChangeImage} value={this.state.image} name='image' id='image'></input>
-        </form>
         <br/>
-        <button onClick={this.handleSubmitForNewInstrument}>submit</button>
+        <button class="formsub" onClick={this.handleSubmitForNewInstrument}>submit</button>
+        </form>  
         </>
       )
   }
@@ -203,6 +202,7 @@ export default class IndividualUser extends Component {
   updateUserinstrumentfordelete =(id)=>{
     const { userInstruments = [] } = this.state
     const newuserInstruments = userInstruments.filter(inst=>inst.id != id);
+    
     this.setState({
       userInstruments:newuserInstruments
     })
@@ -216,14 +216,16 @@ export default class IndividualUser extends Component {
             <p>{user.full_name}</p>
             <p>{user.email}</p>
             <p>{user.contact}</p>
-            <button onClick ={this.thishandleEdituser}>editUser</button>
+            <div class ="thebuttonwrapper">
+            <button class ="thebutton" onClick ={this.thishandleEdituser}>editUser</button>
             {this.state.editUser ? 
             this.edituserForm()
             :<></>}
-            <button onClick ={this.thishandleaddinst}>Add instrument</button>
+            <button class ="thebutton2" onClick ={this.thishandleaddinst}>Add Instrument</button>
             {this.state.addinst ? 
             this.addinstrumentForm()
             :<></>}
+            </div>
             <div class="wrapper">
             {this.userinstrumentList()}
             </div>

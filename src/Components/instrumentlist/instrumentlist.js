@@ -22,7 +22,8 @@ export default class Instrumentlist extends Component {
        <div class="wrapper">
         {error
           ? <p>There was an error, try again</p>
-          : this.renderInstruments()}
+          : this.context.isLoading ? <p>loading</p> 
+            : this.renderInstruments()}
         </div>
       </>
     )

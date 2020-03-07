@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 const InstrumentContext= React.createContext({
     instruments:[],
     currentUserid:0,
-    instrumentswithusers:[],
+    isLoading:true,
     setError: () => {},
     clearError: () => {},
     setinstrumentList: () => {},
@@ -12,6 +12,8 @@ const InstrumentContext= React.createContext({
     addnewUserinstrument:()=>{},
     addupdateInstrument:()=>{},
     delInstrument:()=>{},
+    loadingHasStarted:()=>{},
+    loadingHasFinished:()=>{},
 })
 
 export default InstrumentContext
@@ -21,6 +23,7 @@ export class InstrumentListProvider extends Component {
       instruments: [],
       currentUserid:0,
       error: null,
+      isLoading:true,
     }
 
     saveuserid = currentUserid =>{
@@ -55,11 +58,23 @@ export class InstrumentListProvider extends Component {
     clearError = () => {
       this.setState({ error: null })
     } 
+    loadingHasStarted = () =>{
+      this.setState({
+        isLoading:true,
+      })
+    }
+    loadingHasFinished=()=>{
+      this.setState({
+        isLoading:false,
+      })
+
+    }
     render() {
       const value = {
         instruments: this.state.instruments,
         error: this.state.error,
         currentUserid:this.state.currentUserid,
+        isLoading:this.state.isLoading,
         setError: this.setError,
         clearError: this.clearError,
         setinstrumentList: this.setinstrumentList,
@@ -67,6 +82,9 @@ export class InstrumentListProvider extends Component {
         addNewInstrument:this.addNewInstrument,
         addupdateInstrument:this.addupdateInstrument,
         delInstrument:this.delInstrument,
+        loadingHasStarted:this.loadingHasStarted,
+        loadingHasFinished:this.loadingHasFinished,
+
       }
 
       return (
